@@ -32,10 +32,10 @@ struct __attribute__((packed)) SENSORS {
 // ------------------ Sonar ------------------
 #define SONAR1_TRIG  12  // D12 Arduino pin tied to trigger pin on the ultrasonic sensor.
 #define SONAR1_ECHO  11  // D11 Arduino pin tied to echo pin on the ultrasonic sensor.
-#define SONAR2_TRIG  8  // D8 Arduino pin tied to trigger pin on the ultrasonic sensor.
-#define SONAR2_ECHO  7  // D7 Arduino pin tied to echo pin on the ultrasonic sensor.
-#define SONAR3_TRIG  6  // D6 Arduino pin tied to trigger pin on the ultrasonic sensor.
-#define SONAR3_ECHO  5  // D5 Arduino pin tied to echo pin on the ultrasonic sensor.
+#define SONAR2_TRIG  9  // D9 Arduino pin tied to trigger pin on the ultrasonic sensor.
+#define SONAR2_ECHO  8  // D8 Arduino pin tied to echo pin on the ultrasonic sensor.
+#define SONAR3_TRIG  7  // D7 Arduino pin tied to trigger pin on the ultrasonic sensor.
+#define SONAR3_ECHO  6  // D6 Arduino pin tied to echo pin on the ultrasonic sensor.
 
 #define MAX_DISTANCE 400 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
 
@@ -54,14 +54,19 @@ QMC5883LCompass compass;
 
 // ------------------ L298N ------------------
 
-#define enA 9  // D9
+#define enA 13  // D13
 #define in1 14 // A0
 #define in2 15 // A1
 #define enB 10 // D10
 #define in3 16 // A2
 #define in4 17 // A3
 
+// D2 D3 D4 D5  ==> Free
 
+#define motorEncoderAInterrupt 2  // D2
+#define motorEncoderADirection 3  // D3
+#define motorEncoderBInterrupt 4  // D4
+#define motorEncoderBDirection 5  // D5
 
 
 
@@ -106,6 +111,12 @@ void setup()
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
+
+  pinMode(motorEncoderAInterrupt, INPUT_PULLUP);
+  pinMode(motorEncoderBInterrupt, INPUT_PULLUP);
+
+  attachInterrupt(,,RISING)
+
 }
 
 // ===================================================================
